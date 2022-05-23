@@ -6,7 +6,7 @@ const getEvents = async( req, res = response ) => {
 
     try {
 
-        const events = await Event.find().populate('user', 'name')
+        const events = await Event.find({user: req.uid}).populate('user', 'name')
         
         res.status(200).json({
             ok: true,
